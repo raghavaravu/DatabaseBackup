@@ -9,7 +9,7 @@ CREATE OR REPLACE PROCEDURE occ_dev.proc_report_meetings (
     in_group_by        IN                 VARCHAR2,
     in_location        IN                 VARCHAR2
 ) IS
-
+ 
     l_chr_srcstage       VARCHAR2(200);
     l_chr_biqtab         VARCHAR2(200);
     l_chr_srctab         VARCHAR2(200);
@@ -59,7 +59,7 @@ CREATE OR REPLACE PROCEDURE occ_dev.proc_report_meetings (
                 T_CUST_EVENT
             WHERE
 --                state = 'CONFIRMED'
---                AND 
+--                AND 1=1
                 EVENT_TYPE_ID = 1
                 AND EXTRACT(YEAR FROM start_date) = l_year
                 AND CASE l_type
