@@ -1,0 +1,20 @@
+CREATE TABLE occ_dev.t_audit (
+  activity_time TIMESTAMP,
+  additional_info VARCHAR2(2000 BYTE),
+  audit_event_type VARCHAR2(200 BYTE),
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  "ID" NUMBER NOT NULL,
+  idx_token VARCHAR2(20 BYTE) NOT NULL,
+  object_id VARCHAR2(256 BYTE),
+  object_type VARCHAR2(40 BYTE),
+  status_code VARCHAR2(100 BYTE),
+  unique_id VARCHAR2(256 BYTE) NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  user_email VARCHAR2(100 BYTE),
+  user_name VARCHAR2(256 BYTE),
+  "VERSION" NUMBER,
+  CONSTRAINT t_audit_pk PRIMARY KEY ("ID"),
+  CONSTRAINT t_audit_u_id_uk UNIQUE (unique_id)
+);

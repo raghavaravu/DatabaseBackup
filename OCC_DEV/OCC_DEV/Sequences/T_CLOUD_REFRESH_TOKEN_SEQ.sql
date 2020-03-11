@@ -1,0 +1,1 @@
+CREATE SEQUENCE occ_dev.t_cloud_refresh_token_seq;

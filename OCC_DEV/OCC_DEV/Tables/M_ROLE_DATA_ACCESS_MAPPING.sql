@@ -1,0 +1,20 @@
+CREATE TABLE occ_dev.m_role_data_access_mapping (
+  "ID" NUMBER NOT NULL,
+  resource_name VARCHAR2(64 BYTE),
+  property_name VARCHAR2(64 BYTE),
+  property_value VARCHAR2(256 BYTE),
+  operation VARCHAR2(20 BYTE),
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  "VERSION" NUMBER,
+  unique_id VARCHAR2(256 BYTE) NOT NULL,
+  is_active CHAR(256 BYTE) DEFAULT 1 NOT NULL,
+  role_id NUMBER,
+  idx_token VARCHAR2(4 BYTE) NOT NULL,
+  location_id NUMBER,
+  CONSTRAINT m_rl_data_acc_map_pk PRIMARY KEY ("ID"),
+  CONSTRAINT m_role_data_access_map_uk UNIQUE (unique_id),
+  CONSTRAINT m_rl_data_a_map_role_id_fk FOREIGN KEY (role_id) REFERENCES occ_dev.m_role ("ID")
+);

@@ -1,0 +1,1 @@
+CREATE SEQUENCE occ_dev.t_cust_event_day_cat_seq;

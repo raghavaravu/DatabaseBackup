@@ -1,0 +1,1 @@
+CREATE SEQUENCE occ_dev.t_oauth_session_seq;

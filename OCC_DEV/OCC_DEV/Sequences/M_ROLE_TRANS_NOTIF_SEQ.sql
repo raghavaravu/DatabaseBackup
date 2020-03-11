@@ -1,0 +1,1 @@
+CREATE SEQUENCE occ_dev.m_role_trans_notif_seq;

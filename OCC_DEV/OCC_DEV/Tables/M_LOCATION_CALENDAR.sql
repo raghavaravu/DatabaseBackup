@@ -1,0 +1,20 @@
+CREATE TABLE occ_dev.m_location_calendar (
+  "ID" NUMBER NOT NULL,
+  unique_id VARCHAR2(256 BYTE) NOT NULL,
+  start_date TIMESTAMP,
+  end_date TIMESTAMP,
+  location_id NUMBER,
+  event_id NUMBER,
+  additional_info VARCHAR2(256 BYTE),
+  is_all_day_event CHAR(256 BYTE),
+  is_active CHAR(256 BYTE),
+  created_at TIMESTAMP NOT NULL,
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  "VERSION" NUMBER,
+  idx_token VARCHAR2(4 BYTE) NOT NULL,
+  CONSTRAINT m_loc_cal_id_pk PRIMARY KEY ("ID"),
+  CONSTRAINT m_loc_cal_event_id_fk FOREIGN KEY (event_id) REFERENCES occ_dev.t_cust_event ("ID"),
+  CONSTRAINT m_loc_cal_loc_id_fk FOREIGN KEY (location_id) REFERENCES occ_dev.m_location ("ID")
+);

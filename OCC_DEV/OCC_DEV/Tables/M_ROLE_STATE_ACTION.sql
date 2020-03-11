@@ -1,0 +1,22 @@
+CREATE TABLE occ_dev.m_role_state_action (
+  "ID" NUMBER(20) NOT NULL,
+  unique_id VARCHAR2(256 BYTE) NOT NULL,
+  from_state_id NUMBER(20),
+  to_state_id NUMBER(20),
+  role_id NUMBER(20),
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  "VERSION" NUMBER(6),
+  action_id NUMBER,
+  transition_handler VARCHAR2(256 BYTE),
+  idx_token VARCHAR2(4 BYTE) NOT NULL,
+  is_active CHAR(256 BYTE) DEFAULT 1 NOT NULL,
+  event_type_id NUMBER,
+  CONSTRAINT m_role_state_action_pk PRIMARY KEY ("ID"),
+  CONSTRAINT m_role_state_action_uk UNIQUE (unique_id),
+  CONSTRAINT m_action_id_fk FOREIGN KEY (action_id) REFERENCES occ_dev.m_action ("ID"),
+  CONSTRAINT m_action_state_ev_type_id FOREIGN KEY (event_type_id) REFERENCES occ_dev.t_cust_event_type ("ID"),
+  CONSTRAINT m_role_id_fk FOREIGN KEY (role_id) REFERENCES occ_dev.m_role ("ID")
+);

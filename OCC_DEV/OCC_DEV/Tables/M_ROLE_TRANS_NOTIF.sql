@@ -1,0 +1,21 @@
+CREATE TABLE occ_dev.m_role_trans_notif (
+  "ID" NUMBER(20) NOT NULL,
+  unique_id VARCHAR2(256 BYTE) NOT NULL,
+  role_transition_id NUMBER(20),
+  template_id NUMBER(20),
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  "VERSION" NUMBER(6),
+  auto_send NUMBER,
+  is_active CHAR(256 BYTE) DEFAULT 1 NOT NULL,
+  location_id NUMBER,
+  "METHOD" VARCHAR2(20 BYTE),
+  recipients VARCHAR2(4000 BYTE),
+  idx_token VARCHAR2(4 BYTE) NOT NULL,
+  CONSTRAINT m_role_trans_notif_pk PRIMARY KEY ("ID"),
+  CONSTRAINT m_role_trans_notif_uk UNIQUE (unique_id),
+  CONSTRAINT m_role_state_action_fk FOREIGN KEY (role_transition_id) REFERENCES occ_dev.m_role_state_action ("ID"),
+  CONSTRAINT m_role_trans_notif_loc_fk FOREIGN KEY (location_id) REFERENCES occ_dev.m_location ("ID")
+);

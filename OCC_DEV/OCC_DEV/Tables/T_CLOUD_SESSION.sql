@@ -1,0 +1,23 @@
+CREATE TABLE occ_dev.t_cloud_session (
+  "ID" NUMBER(11) NOT NULL,
+  unique_id VARCHAR2(128 BYTE) NOT NULL,
+  account_id NUMBER(11),
+  session_token VARCHAR2(1024 BYTE),
+  expires_at TIMESTAMP,
+  client_type_id NUMBER(11),
+  auth_code VARCHAR2(256 BYTE),
+  auth_code_expires_at TIMESTAMP,
+  redirect_uri VARCHAR2(256 BYTE),
+  refresh_token_id NUMBER(11),
+  created_at TIMESTAMP NOT NULL,
+  created_by VARCHAR2(256 BYTE) NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  updated_by VARCHAR2(256 BYTE) NOT NULL,
+  oauth_session_id NUMBER(11),
+  idx_token VARCHAR2(8 BYTE) NOT NULL,
+  setup_token VARCHAR2(64 BYTE),
+  device_id NUMBER(11),
+  CONSTRAINT t_cloud_session_pk PRIMARY KEY ("ID"),
+  CONSTRAINT t_cloud_session_uk UNIQUE (unique_id),
+  CONSTRAINT t_cloud_session_acc_id_fk FOREIGN KEY (account_id) REFERENCES occ_dev.m_user ("ID")
+);
